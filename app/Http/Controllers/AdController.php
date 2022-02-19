@@ -22,18 +22,6 @@ class AdController extends Controller
 
     public function store(Request $request)
     {
-        // Code ne fonctionnant pas
-        /*$validated = $request->validate([
-            'ref_annonce'       => 'required',
-            'prix_annonce'      => 'required',
-            'surface_habitable' => 'required',
-            'nombre_de_piece'   => 'required',
-            'agent_id'          => ['integer', Rule::exists('agents', 'id')]
-        ]);
-
-        Ad::create($validated);*/
-
-        // Code fonctionnant
         $ad = new Ad;
 
         $ad->ref_annonce         = $request->input('ref_annonce');
@@ -63,18 +51,6 @@ class AdController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Code ne fonctionnant pas
-        /*$validated = $request->validate([
-            'ref_annonce'       => 'required',
-            'prix_annonce'      => 'required',
-            'surface_habitable' => 'required',
-            'nombre_de_piece'   => 'required',
-            'agent_id'          => ['integer', Rule::exists('agents', 'id')]
-        ]);
-
-        $ad->update($validated);*/
-
-        // Code fonctionnant
         $ad = Ad::find($id);
         $ad->ref_annonce = $request->input('ref_annonce');
         $ad->prix_annonce = $request->input('prix_annonce');

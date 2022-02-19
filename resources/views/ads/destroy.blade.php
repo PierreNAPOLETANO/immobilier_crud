@@ -3,5 +3,7 @@
 @section('title', "Création d'une annonce")
 
 @section('content')
-    <p>This is my body content.</p>
+<div class="col text-center">
+    <a class="btn btn-primary" href="{{ route('annonces.index') }}">Retour aux annonces</a>
+</div>
 @stop
