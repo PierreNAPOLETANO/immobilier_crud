@@ -3,8 +3,9 @@
 @section('title', "Création d'une annonce")
 
 @section('content')
-<form action="{{ route('annonces.edit', $ad->id) }}" method="post">
+<form action="{{ route('annonces.update',$ad->id) }}" method="POST">
     @csrf
+    @method('PUT')
     <div>
         <label for="ref_annonce">Référence de l'annonce</label>
         <input type="text" name="ref_annonce" id="ref_annonce" value="{{ $ad->ref_annonce }}">

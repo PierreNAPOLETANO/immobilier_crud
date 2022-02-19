@@ -20,9 +20,10 @@ class AdController extends Controller
         return view('ads.create', ['agents' => $agents]);
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        $validated = request()->validate([
+        // Code ne fonctionnant pas
+        /*$validated = $request->validate([
             'ref_annonce'       => 'required',
             'prix_annonce'      => 'required',
             'surface_habitable' => 'required',
@@ -30,7 +31,18 @@ class AdController extends Controller
             'agent_id'          => ['integer', Rule::exists('agents', 'id')]
         ]);
 
-        Ad::create($validated);
+        Ad::create($validated);*/
+
+        // Code fonctionnant
+        $ad = new Ad;
+
+        $ad->ref_annonce         = $request->input('ref_annonce');
+        $ad->prix_annonce        = $request->input('prix_annonce');
+        $ad->superfice_habitable = $request->input('superfice_habitable');
+        $ad->nombre_de_piece     = $request->input('nombre_de_piece');
+        $ad->agent_id            = $request->input('agent_id');
+
+        $ad->save();
 
         return view('ads.store');
     }
@@ -41,7 +53,7 @@ class AdController extends Controller
         return view('ads.show', ['ad' => $ad]);
     }
 
-    public function edit($id)
+    public function edit($id, Ad $ad)
     {
         $ad = Ad::find($id);
         return view('ads.edit', [
@@ -49,9 +61,10 @@ class AdController extends Controller
         ]);
     }
 
-    public function update(Ad $ad)
+    public function update(Request $request, $id)
     {
-        $validated = request()->validate([
+        // Code ne fonctionnant pas
+        /*$validated = $request->validate([
             'ref_annonce'       => 'required',
             'prix_annonce'      => 'required',
             'surface_habitable' => 'required',
@@ -59,7 +72,15 @@ class AdController extends Controller
             'agent_id'          => ['integer', Rule::exists('agents', 'id')]
         ]);
 
-        $ad->update($validated);
+        $ad->update($validated);*/
+
+        // Code fonctionnant
+        $ad = Ad::find($id);
+        $ad->ref_annonce = $request->input('ref_annonce');
+        $ad->prix_annonce = $request->input('prix_annonce');
+        $ad->superfice_habitable = $request->input('superfice_habitable');
+        $ad->nombre_de_piece = $request->input('nombre_de_piece');
+        $ad->update();
 
         return view('ads.update');
     }

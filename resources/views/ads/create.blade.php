@@ -3,12 +3,13 @@
 @section('title', "Création d'une annonce")
 
 @section('content')
-<form action="{{ route('annonces.create') }}" method="POST">
+<form action="{{ route('annonces.store') }}" method="POST">
     @csrf
+    @method('POST')
     <div>
         <select name="agent_id" id="agent_id">
             @foreach($agents as $agent)
-            <option value="{{ $agent->id }}">{{ $agent->nom_agent }} - >{{ $agent->prenom_agent }}</option>
+            <option value="{{ $agent->id }}">M. {{ $agent->nom_agent }}</option>
             @endforeach
         </select>
     </div>

@@ -8,6 +8,7 @@
 </div>
 @foreach($ads as $ad)
 <p>Nom de l'agent : {{ $ad->agent->nom_agent }}</p>
+<p>Nom de l'agent : {{ $ad->agent->prenom_agent }}</p>
 <p>Référence : {{ $ad->ref_annonce }}</p>
 <p>Prix : {{ $ad->prix_annonce }}</p>
 <p>Superficie habitable{{ $ad->superfice_habitable }}</p>
