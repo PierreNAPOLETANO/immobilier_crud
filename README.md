@@ -1,12 +1,5 @@
 # Nom du projet: Immobilier CRUD
 
-## Table of Contents
-1. [Description du projet](#general-info)
-2. [Installation](#installation)
-3. [Les étapes](#technologies)
-4. [Les exigences concernant l’environnement de développement en vue de son intégration](#installation)
-5. [Les Technologies](#collaboration)
-
 ## Description du projet
 C'est un CRUD simple utilisant le framework PHP Laravel, pour le frontend j'ai utiliser le framework CSS Bootstrap, car m'ayant parlé que vous utilisé Bootstrap pour l'admin de votre application.
 
