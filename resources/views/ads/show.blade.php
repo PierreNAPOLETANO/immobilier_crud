@@ -17,12 +17,15 @@
         <div class="card-body">
             <div class="row">
                 <div class="col text-center">
+                    <!-- Permet de renvoyer l'utilisateur vers la pages contenant toute les annonces -->
                     <a class="btn btn-primary" href="{{ route('annonces.index') }}">Retour aux annonces</a>
                 </div>
                 <div class="col text-center">
+                    <!-- Bouton pour être redirigé vers la page de modition de l'annonce -->
                     <a class="btn btn-warning" href="{{ route('annonces.edit', $ad->id) }}" target="_blank">Modifier</a>
                 </div>
                 <div class="col text-center">
+                    <!-- Bouton pour être redirigé vers la page de suppression de l'annonce -->
                     <form action="{{ route('annonces.destroy', $ad->id) }}" method="post">
                         @method('DELETE')
                         @csrf

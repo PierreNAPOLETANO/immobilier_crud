@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // Création de 2 agents
         $agent = \App\Models\Agent::create([
             'nom_agent' => 'NAPOLETANO',
             'prenom_agent' => 'Pierre'
@@ -25,6 +26,7 @@ class DatabaseSeeder extends Seeder
             'prenom_agent' => 'Marcel'
         ]);
 
+        // Création de 2 annonces
         Ad::create([
             'ref_annonce' => '123654FG',
             'prix_annonce' => 125.05,

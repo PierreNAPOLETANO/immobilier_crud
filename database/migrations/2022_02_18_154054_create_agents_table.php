@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('agents', function (Blueprint $table) {
             $table->id();
-            $table->string('nom_agent');
-            $table->string('prenom_agent');
+            $table->string('nom_agent'); // Champ 'nom_agent' de type string (varchar)
+            $table->string('prenom_agent'); // Champ 'prenom_agent' de type string (varchar)
             $table->timestamps();
         });
     }

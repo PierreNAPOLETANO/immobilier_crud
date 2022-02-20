@@ -1,64 +1,72 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Nom du projet: Immobilier CRUD
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Table of Contents
+1. [Description du projet](#general-info)
+2. [Installation](#installation)
+3. [Les étapes](#technologies)
+4. [Les exigences concernant l’environnement de développement en vue de son intégration](#installation)
+5. [Les Technologies](#collaboration)
 
-## About Laravel
+## Description du projet
+C'est un CRUD simple utilisant le framework PHP Laravel, pour le frontend j'ai utiliser le framework CSS Bootstrap, car m'ayant parlé que vous utilisé Bootstrap pour l'admin de votre application.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Installation
+1ère étape: Créer une base de données MySQL
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+2ème étape: Créer un fichier .env et faite un copier coller du contenu fichier .env.example pour ensuite vous relier à votre base de   
+            données puis dans la partie du fichier lié à la base de donnée, DB_DATABASE doit être égal au nom de la bade de données 
+            qu vous avez créer au prélable.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+3ème étape: Dans le terminal saisir la commande `composer install & npm install`
 
-## Learning Laravel
+4ème étape: Tojours dans le terminal, saisir la commande `php artisan migrate`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Les étapes (que j'ai fait pour le créer le projet)
+1ère étape: Créarion du projet avec la commande `laravel new immobilier_crud & cd immobilier_crud`
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+2ème étape: Création de ma base de données `immobilier_crud`
 
-## Laravel Sponsors
+3ème étape: Configuration du fichier .env
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+4ème étape : Création des models Ad et Agent, des tables create_ads_table et create_agents_table et des 5
+              controllers AdController et AgentController pour pour effectuer des opérations du CRUD. et création de ma base de données
+              configuration du fichier .env pour ma base de données afin d'y mettre à l'avenir mes données.
 
-### Premium Partners
+            Création d'un model: `php artisan make:model nom_du_model`
+            Création d'une table: `php artisan make:migration create_nomDeLaTableAuPluriel_table`
+            Creation des controller: `php artisan make:controller NomController`
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+5ème étape: Création des champs dans les 2 fichiers create_ads_table et create_agents_table ainsi qu'une
+            clé étrangère agent->foreignId() dans create_ads_table permettant de faire référence à l'id de agent.
 
-## Contributing
+6ème étape: Mise en relation ManyToOne (belongsTo) dans le fichier App\Models\Ad.php
+            Via une fonction agent() retournant une relation ManyToOne(belongsTo) vers le model Agent
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+7ème étape: Afin d'appliquer toutes nos migrations j'ai utiliser la commande php artisan migrate
 
-## Code of Conduct
+8ème étape: J'ai créé 2 utilisateurs dans le fichier DatabaseSeeder.php (répertoire: database/seeders/) ainsi que 2 annonces pour avoir
+            de base 2 annonces qui sont reliés chacune à un agent mait permettra lors de la création d'autre annonces de pouvoir choisir entre ces 2 agents.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+            Pour ajouter les 2 agents ainsi que les 2 annonces en base de données j'ai exécuter la commande `php artisan db:seed` permettant d'ajouter en base de données mes données renseigner dans le fichier databaseSeeder.php
 
-## Security Vulnerabilities
+9ème étape: Création des routes pour les annonces, dans le fichier web.php en utilisant cette ligne `Route::resource('annonces', AdController::class);`, ce qui permet grâce à `resource` de définir toutes les routes pour chaque action possible pour l'url commençant par `annonces`, j'indique également que j'utilise le controleur `AdController`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+10ème étape: Création des méthodes index(), create(), store(), show(), edit(), update(), destroy() pour que je puisse effectuer        
+mes opérations du CRUD dans mon panneau d'administration pour mes annonces.
 
-## License
+11ème étape: Création des fichiers .blade.php contenant les différentes actions du CRUD, pour les nom        
+            des fichiers j'ai jouer la sécurité en les nommants comme les noms des différentes méthodes.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Les Technologies
+
+Backend:
+    * Langage: PHP
+    * Framework: Laravel
+    * Base de données: MySQL
+
+Frontend:
+    * Lanages:
+    + Langage de balises: HTML
+    + Langage de style: CSS
+    + Langage de script: Javascript
+    + Framework: Bootstrap
